@@ -11,6 +11,7 @@ namespace ExtractorOnCommandLine
     {
         private readonly string ImageLocation;
         private readonly string ImageName;
+        private readonly int ImageSize;
         private readonly DateTime DateTaken;
         private readonly Device CameraDevice;
         private readonly GPS Location;
@@ -19,6 +20,19 @@ namespace ExtractorOnCommandLine
         public Image()
         {
             ;
+        }
+
+        public Image(string imageLocation, string imageName, int imageSize,
+            DateTime dateTaken, Device cameraDevice, GPS location,
+            string uniqueID)
+        {
+            this.ImageLocation = imageLocation;
+            this.ImageName = imageName;
+            this.ImageSize = imageSize;
+            this.DateTaken = dateTaken;
+            this.CameraDevice = cameraDevice;
+            this.Location = location;
+            this.UniqueID = uniqueID;
         }
 
         private DateTime MakeDate(string dateTaken)
@@ -32,7 +46,7 @@ namespace ExtractorOnCommandLine
             return this.ImageLocation;
         }
 
-        class GPS
+        public class GPS
         {
             private readonly decimal longitude;
             private readonly decimal latitude;
@@ -115,7 +129,7 @@ namespace ExtractorOnCommandLine
             }
         }
 
-        class Device
+        public class Device
         {
             private readonly string device;
             private readonly string model;
